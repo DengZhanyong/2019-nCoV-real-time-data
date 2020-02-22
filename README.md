@@ -1,16 +1,21 @@
-# 2019-nCoV-real-time-data
 
-天天在家还是要找点事情做，我相信很多程序员都想要疫情数据，我也不例外，开始我还想着去爬去其他网站的数据。尝试了一下很麻烦还费时，于是我找到了一个api接口，该接口包含了今日数据、历史数据、各省/市数据，但是他们全部都是在一个JSON数据中，使用起来很不方便。
+
+## **疫情肺炎数据**
+
+> 天天在家还是要找点事情做，我相信很多程序员都想要疫情数据，我也不例外，开始我还想着去爬去其他网站的数据。尝试了一下很麻烦还费时，于是我找到了一个api接口，该接口包含了今日数据、历史数据、各省/市数据，但是他们全部都是在一个JSON数据中，使用起来很不方便。
+
+**源码已上传到github：[https://github.com/DengZhanyong/2019-nCoV-real-time-data]**(https://github.com/DengZhanyong/2019-nCoV-real-time-data)
 
 为了大家更好的调用，我对这个数据进行处理后保存到了自己的数据库中，并开放出了自己的接口，更加的方便灵活，具体如下：
 
-注：所有接口全部为GET请求
+**注：所有接口全部为GET请求**
 
-获取全国总数据
-http://www.dzyong.top:3005/yiqing/total
+## 获取全国总数据
 
-返回结果：
+[http://www.dzyong.top:3005/yiqing/total](http://www.dzyong.top:3005/yiqing/total)
 
+
+```javascript
 {
     "data": [
         {
@@ -23,16 +28,14 @@ http://www.dzyong.top:3005/yiqing/total
         }
     ]
 }
+```
 
 
+## 获取历史数据（最早到1月23日数据）
 
-获取历史数据（由于原接口不对个人开放，这里暂时无法更新最新数据）
-http://www.dzyong.top:3005/yiqing/history
+[http://www.dzyong.top:3005/yiqing/history](http://www.dzyong.top:3005/yiqing/history)
 
-返回结果：
-
-
-
+```javascript
 {
     "data": [
         {
@@ -56,24 +59,18 @@ http://www.dzyong.top:3005/yiqing/history
        ......
     ]
 }
+```
 
+## 获取各省/市最新总数据
 
-
-
-
-获取各省/市最新总数据
-http://www.dzyong.top:3005/yiqing/province
+[http://www.dzyong.top:3005/yiqing/province](http://www.dzyong.top:3005/yiqing/province)
 
 请求参数：
+|  参数名| 是否必填 |说明|
+|--|--|--|
+|province  | 否 | 当为空或不填时，返回所有省/市最新总数据，当传参时要注意，不要带‘省’或‘市’字，如：‘重庆市’应填‘重庆’|
 
-参数名 是否必填 说明
-
-province 否 当为空或不填时，返回所有省/市最新总数据，当传参时要注意，不要带‘省’或‘市’字，如：‘重庆市’应填‘重庆’
-
-返回结果：
-
-
-
+```javascript
 {
     "data": [
         {
@@ -100,24 +97,18 @@ province 否 当为空或不填时，返回所有省/市最新总数据，当传
         ......
     ]
 }
+```
 
+## 获取各省/市/地区数据
 
-
-
-
-获取各省/市/地区数据
-http://www.dzyong.top:3005/yiqing/area
+[http://www.dzyong.top:3005/yiqing/area](http://www.dzyong.top:3005/yiqing/area)
 
 请求参数：
+|  参数名| 是否必填 |说明|
+|--|--|--|
+| area | 否 |当为空或不填时，返回所有省市地区数据，当传参时要注意，不要带‘省’或‘市’字，如：‘重庆市’应填‘重庆’|
 
-参数名 是否必填 说明
-
-area 否 当为空或不填时，返回所有省市地区数据，当传参时要注意，不要带‘省’或‘市’字，如：‘重庆市’应填‘重庆’
-
-返回结果（以湖北为例）：
-
-
-
+```javascript
 {
     "data": [
         {
@@ -150,25 +141,21 @@ area 否 当为空或不填时，返回所有省市地区数据，当传参时�
         .......
     ]
 }
+```
 
+## 获取最新动态新闻（最早到2月6日数据）
 
-
-
-获取最新动态新闻（最早到2月6日数据）
-http://www.dzyong.top:3005/yiqing/news
+[http://www.dzyong.top:3005/yiqing/news](http://www.dzyong.top:3005/yiqing/news)
 
 请求参数：
+|  参数名| 是否必填 |说明|
+|--|--|--|
+| pageNum| 否 |页码未填时，默认查询所有新闻）|
+| pageSize| 否 |每页新闻条数（未填时，默认查询所有新闻）|
 
-参数名 是否 必填说明
+**注：返回结果中的 pubDateStr 字段仅为参考时间，若想实时更新，可通过 pubDate 字段自行计算**
 
-pageNum 否 页码未填时，默认查询所有新闻）
-
-pageSize 否 每页新闻条数（未填时，默认查询所有新闻）
-
-注：返回结果中的 pubDateStr 字段仅为参考时间，若想实时更新，可通过 pubDate 字段自行计算
-
-
-
+```javascript
 {
     "data": [
         {
@@ -197,3 +184,8 @@ pageSize 否 每页新闻条数（未填时，默认查询所有新闻）
         },
 		......
 }
+```
+
+## 通向博主个人网站
+
+[http://www.dzyong.top](http://www.dzyong.top)
