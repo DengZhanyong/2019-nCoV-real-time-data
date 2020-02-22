@@ -3,8 +3,8 @@ const http = require('http')
 const database = require('./database')
 
 var url = 'https://www.tianqiapi.com/api?version=epidemic&appid=14249972&appsecret=H2UiGOGq'
-var tianxing = 'http://api.tianapi.com/txapi/ncov/index?key=4cebe352636311f3650eb66f08520143'
-var city = 'http://api.tianapi.com/txapi/ncovcity/index?key=4cebe352636311f3650eb66f08520143'
+var tianxing = 'http://api.tianapi.com/txapi/ncov/index?key=************'   //自行去天行API注册获取key值
+var city = 'http://api.tianapi.com/txapi/ncovcity/index?key=************'
 function getData() {
     http.get(city, res => {
         let html = ''
