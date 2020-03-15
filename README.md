@@ -31,7 +31,7 @@
 ```
 
 
-## 获取历史数据（最早到1月23日数据【暂不可用】）
+## 获取历史数据
 
 [http://www.dzyong.top:3005/yiqing/history](http://www.dzyong.top:3005/yiqing/history)
 
